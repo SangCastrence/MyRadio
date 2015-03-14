@@ -1,0 +1,100 @@
+#|
+$Source $Yail
+|#
+
+(define-form appinventor.ai_fernandezmaceh08.myradio.Screen1 Screen1)
+(require <com.google.youngandroid.runtime>)
+
+;;; Screen1
+
+(do-after-form-creation (set-and-coerce-property! 'Screen1 'AboutScreen "LIsten to my radio" 'text)
+ (set-and-coerce-property! 'Screen1 'AppName "myradio" 'text)
+ (set-and-coerce-property! 'Screen1 'BackgroundImage "03_AudioEqualizer.jpg" 'text)
+ (set-and-coerce-property! 'Screen1 'Icon "images.jpg" 'text)
+ (set-and-coerce-property! 'Screen1 'Title "RADIO" 'text)
+)
+
+;;; MYRADIO
+
+(add-component Screen1 Label MYRADIO 
+(set-and-coerce-property! 'MYRADIO 'BackgroundColor #xFFFFC800 'number)
+
+(set-and-coerce-property! 'MYRADIO 'FontBold #t 'boolean)
+
+(set-and-coerce-property! 'MYRADIO 'FontSize 50 'number)
+
+(set-and-coerce-property! 'MYRADIO 'Text "MY RADIO" 'text)
+
+(set-and-coerce-property! 'MYRADIO 'TextAlignment 1 'number)
+
+(set-and-coerce-property! 'MYRADIO 'TextColor #xFFFFFFFF 'number)
+
+(set-and-coerce-property! 'MYRADIO 'Width -2 'number)
+
+)
+
+;;; HorizontalArrangement1
+
+(add-component Screen1 HorizontalArrangement HorizontalArrangement1 
+(set-and-coerce-property! 'HorizontalArrangement1 'AlignHorizontal 3 'number)
+
+(set-and-coerce-property! 'HorizontalArrangement1 'Width -2 'number)
+
+)
+
+;;; PAUSE
+
+(add-component HorizontalArrangement1 Button PAUSE 
+(set-and-coerce-property! 'PAUSE 'Image "button_pause_icon.jpg" 'text)
+
+(set-and-coerce-property! 'PAUSE 'Width 50 'number)
+
+(set-and-coerce-property! 'PAUSE 'Height 50 'number)
+
+)
+
+(define-event PAUSE Click()(set-this-form)
+    (set-and-coerce-property! 'Player1 'Source "http://192.95.32.122:8211" 'text)(call-component-method 'Player1 'Pause (*list-for-runtime*) '()))
+;;; STOP
+
+(add-component HorizontalArrangement1 Button STOP 
+(set-and-coerce-property! 'STOP 'Image "img-thing.jpg" 'text)
+
+(set-and-coerce-property! 'STOP 'Width 50 'number)
+
+(set-and-coerce-property! 'STOP 'Height 50 'number)
+
+)
+
+(define-event STOP Click()(set-this-form)
+    (set-and-coerce-property! 'Player1 'Source "http://192.95.32.122:8211" 'text)(call-component-method 'Player1 'Stop (*list-for-runtime*) '()))
+;;; PLAY
+
+(add-component HorizontalArrangement1 Button PLAY 
+(set-and-coerce-property! 'PLAY 'Image "p.jpg" 'text)
+
+(set-and-coerce-property! 'PLAY 'Width 50 'number)
+
+(set-and-coerce-property! 'PLAY 'Height 50 'number)
+
+)
+
+(define-event PLAY Click()(set-this-form)
+    (set-and-coerce-property! 'Player1 'Source "http://192.95.32.122:8211" 'text)(call-component-method 'Player1 'Start (*list-for-runtime*) '()))
+;;; Image1
+
+(add-component Screen1 Image Image1 
+(set-and-coerce-property! 'Image1 'Picture "unnamed.png" 'text)
+
+(set-and-coerce-property! 'Image1 'Width -2 'number)
+
+(set-and-coerce-property! 'Image1 'Height 300 'number)
+
+)
+
+;;; Player1
+
+(add-component Screen1 Player Player1 
+)
+
+(init-runtime)
